@@ -41,19 +41,19 @@ class Orchestrator extends Component with HasGameRef<MyGame> {
 
   void spawnBasic() {
     if (random.nextBool() && parent!.children.whereType<BasicEnemy>().length <= maxBasic) {
-      parent!.add(BasicEnemy(Vector2.random()..multiply(gameRef.world.size)));
+      parent!.add(BasicEnemy(Vector2.random()..multiply(gameRef.world.size))..changePriorityWithoutResorting(3));
     }
   }
 
   void spawnBig() {
     if (random.nextBool() && parent!.children.whereType<BigEnemy>().length <= maxBig) {
-      parent!.add(BigEnemy(Vector2.random()..multiply(gameRef.world.size)));
+      parent!.add(BigEnemy(Vector2.random()..multiply(gameRef.world.size))..changePriorityWithoutResorting(3));
     }
   }
 
   void spawnHostage() {
     if (parent!.children.whereType<Hostage>().length <= maxHostage) {
-      parent!.add(Hostage()..position = (Vector2.random()..multiply(gameRef.world.size)));
+      parent!.add(Hostage()..position = (Vector2.random()..multiply(gameRef.world.size))..changePriorityWithoutResorting(3));
     }
   }
 }
